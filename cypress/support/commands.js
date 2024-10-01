@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('addCustomer', (FirstName, LastName, PostCode) => {
+    cy.get('[ng-class="btnClass1"]').click()
+    cy.get(':nth-child(1) > .form-control').type(FirstName)
+    cy.get(':nth-child(2) > .form-control').type(LastName)
+    cy.get(':nth-child(3) > .form-control').type(PostCode)
+    cy.wait(3000)
+    cy.get('form.ng-dirty > .btn').click()
+})
+
